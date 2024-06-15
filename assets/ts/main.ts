@@ -48,8 +48,8 @@ let Stack = {
                         const colors = await getColor(key, hash, imageURL);
 
                         articleDetails.style.background = `
-                        linear-gradient(0deg, 
-                            rgba(${colors.DarkMuted.rgb[0]}, ${colors.DarkMuted.rgb[1]}, ${colors.DarkMuted.rgb[2]}, 0.5) 0%, 
+                        linear-gradient(0deg,
+                            rgba(${colors.DarkMuted.rgb[0]}, ${colors.DarkMuted.rgb[1]}, ${colors.DarkMuted.rgb[2]}, 0.5) 0%,
                             rgba(${colors.Vibrant.rgb[0]}, ${colors.Vibrant.rgb[1]}, ${colors.Vibrant.rgb[2]}, 0.75) 100%)`;
                     })
                 })
@@ -63,35 +63,45 @@ let Stack = {
          * Add copy button to code block
         */
         const highlights = document.querySelectorAll('.article-content div.highlight');
-        const copyText = `Copy`,
-            copiedText = `Copied!`;
+        const copyText = `📄 Copy`;
+        const copiedText = `Copied!`;
 
-        highlights.forEach(highlight => {
-            const copyButton = document.createElement('button');
+        highlights.forEach((highlight) => {
+            const copyButton = document.createElement("button");
             copyButton.innerHTML = copyText;
-            copyButton.classList.add('copyCodeButton');
+            copyButton.classList.add("copy-code-button");
             highlight.appendChild(copyButton);
 
-            const codeBlock = highlight.querySelector('code[data-lang]');
+            const codeBlock = highlight.querySelector("code[data-lang]");
+            // 获取语言
+            const lang = codeBlock.getAttribute("data-lang");
             if (!codeBlock) return;
 
-            copyButton.addEventListener('click', () => {
-                navigator.clipboard.writeText(codeBlock.textContent)
+            copyButton.addEventListener("click", () => {
+                navigator.clipboard
+                    .writeText(codeBlock.textContent)
                     .then(() => {
                         copyButton.textContent = copiedText;
 
                         setTimeout(() => {
                             copyButton.textContent = copyText;
-                        }, 1000);
+                        }, 1500);
                     })
-                    .catch(err => {
-                        alert(err)
-                        console.log('Something went wrong', err);
+                    .catch((err) => {
+                        alert(err);
+                        console.log("Something went wrong", err);
                     });
             });
+
+            // Add language code button
+            const languageButton = document.createElement("button");
+            languageButton.innerHTML = lang.toUpperCase() + "&nbsp;&nbsp;";
+            languageButton.classList.add("language-code-button");
+
+            highlight.appendChild(languageButton);
         });
 
-        new StackColorScheme(document.getElementById('dark-mode-toggle'));
+        new StackColorScheme(document.getElementById("dark-mode-toggle"));
     }
 }
 

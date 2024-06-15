@@ -152,7 +152,8 @@ $defaultTagColors: #fff, #fff, #fff, #fff, #fff;
 [data-scheme="light"] {
     --pre-text-color: #272822;
     --pre-background-color: #fafafa;
-    @import "partials/highlight/light.scss";
+    // 明亮模式下也使用暗黑模式下的高亮样式代码
+    @import "partials/highlight/dark.scss";
 }
 
 [data-scheme="dark"] {
