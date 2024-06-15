@@ -31,6 +31,16 @@
       总计 {{ div ($scratch.Get "total") 1000.0 | lang.FormatNumber 2 }}k 字
     </section>
 
+    <!-- add busuanzi count -->
+    <section class="busuanzi-count">
+      <span id="busuanzi_container_site_pv">
+        本站总访问量 <span id="busuanzi_value_site_pv"></span> 次
+      </span> ·
+      <span id="busuanzi_container_site_uv">
+        总访客数 <span id="busuanzi_value_site_uv"></span> 人
+      </span>
+    </section>
+
     <section class="running-time">
       本博客已稳定运行 🧡
       <span id="runningdays" class="running-days"></span>
