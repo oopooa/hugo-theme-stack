@@ -21,6 +21,16 @@
         {{ T "footer.designedBy" (dict "Theme" $Theme "DesignedBy" $DesignedBy) | safeHTML }}
     </section>
 
+    <!-- total page and word count time -->
+    <section class="total-count">
+      {{$scratch := newScratch}}
+      {{ range (where .Site.Pages "Kind" "page" )}}
+          {{$scratch.Add "total" .WordCount}}
+      {{ end }}
+      发表了 {{ len (where .Site.RegularPages "Section" "post") }} 篇文章 ·
+      总计 {{ div ($scratch.Get "total") 1000.0 | lang.FormatNumber 2 }}k 字
+    </section>
+
     <section class="running-time">
       本博客已稳定运行 🧡
       <span id="runningdays" class="running-days"></span>
