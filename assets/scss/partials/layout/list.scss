@@ -34,6 +34,7 @@
             width: 60px;
             height: 60px;
             border-radius: calc(var(--card-border-radius) / 2);
+            object-fit: cover;
         }
     }
 
