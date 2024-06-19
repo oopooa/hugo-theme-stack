@@ -79,3 +79,21 @@ pre code.hljs {
     font-size: 1.5rem;
   }
 }
+
+// 滚动条
+html {
+  ::-webkit-scrollbar {
+    width: 18px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: #E2E2E3;
+    border-radius: 16px;
+    border: 4px solid transparent;
+    background-clip: content-box;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    cursor: pointer;
+  }
+}
