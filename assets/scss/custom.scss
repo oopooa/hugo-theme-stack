@@ -97,3 +97,15 @@ html {
     cursor: pointer;
   }
 }
+
+// 模糊
+.blur {
+  color: transparent;
+  text-shadow: 0px 0px 16px var(--card-text-color-main);
+  transition: text-shadow .6s ease-out;
+
+  &:hover {
+    color: transparent;
+    text-shadow: 0px 0px 0px var(--card-text-color-main);
+  }
+}
